@@ -12,12 +12,12 @@ void main() async {
           inputDecorationTheme: const InputDecorationTheme(
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: Colors.white,
+                color: Colors.amber,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: Colors.amber,
+                color: Colors.white,
               ),
             ),
             hintStyle: TextStyle(
