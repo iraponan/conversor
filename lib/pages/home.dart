@@ -1,11 +1,8 @@
 import 'dart:convert';
 
-import 'package:conversor/main.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:async/async.dart';
-import 'package:convert/convert.dart';
 
 const String key = String.fromEnvironment('KEYHGBRASIL');
 final request =
@@ -56,8 +53,89 @@ class _HomeState extends State<Home> {
                   ),
                 );
               } else {
-                return Container(
-                  color: Colors.green,
+                double dollar =
+                    snapshot.data?['results']['currencies']['USD']['buy'] ?? 0;
+                double euro =
+                    snapshot.data?['results']['currencies']['EUR']['buy'] ?? 0;
+                double libra =
+                    snapshot.data?['results']['currencies']['GBP']['buy'] ?? 0;
+                double pesoArg =
+                    snapshot.data?['results']['currencies']['ARS']['buy'] ?? 0;
+                double dollarCan =
+                    snapshot.data?['results']['currencies']['CAD']['buy'] ?? 0;
+                double dollarAust =
+                    snapshot.data?['results']['currencies']['AUD']['buy'] ?? 0;
+                double yenJap =
+                    snapshot.data?['results']['currencies']['JPY']['buy'] ?? 0;
+                double yuanChi =
+                    snapshot.data?['results']['currencies']['CNY']['buy'] ?? 0;
+                double bitcoin =
+                    snapshot.data?['results']['currencies']['BTC']['buy'] ?? 0;
+                return const Padding(
+                  padding: EdgeInsets.all(16),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Icon(
+                          Icons.monetization_on,
+                          size: 150,
+                          color: Colors.amber,
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                            labelText: 'Reais',
+                            labelStyle: TextStyle(
+                              color: Colors.amber,
+                            ),
+                            border: OutlineInputBorder(),
+                            prefixText: 'R\$',
+                          ),
+                          style: TextStyle(
+                            color: Colors.amber,
+                            fontSize: 25,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                            labelText: 'Dólares',
+                            labelStyle: TextStyle(
+                              color: Colors.amber,
+                            ),
+                            border: OutlineInputBorder(),
+                            prefixText: 'US\$',
+                          ),
+                          style: TextStyle(
+                            color: Colors.amber,
+                            fontSize: 25,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        TextField(
+                          decoration: InputDecoration(
+                            labelText: 'Euro',
+                            labelStyle: TextStyle(
+                              color: Colors.amber,
+                            ),
+                            border: OutlineInputBorder(),
+                            prefixText: '€\$',
+                          ),
+                          style: TextStyle(
+                            color: Colors.amber,
+                            fontSize: 25,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               }
           }
