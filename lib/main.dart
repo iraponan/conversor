@@ -6,9 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:async/async.dart';
 import 'package:convert/convert.dart';
 
-
-final request = Uri.https('api.hgbrasil.com', '/finance/quotations', {'key' : '4691523c'});
-    //'api.hgbrasil.com/finance/quotations?key=4691523c';
+const String key = String.fromEnvironment('KEYHGBRASIL');
+final request = Uri.https('api.hgbrasil.com', '/finance/quotations', {'key' : key});
 
 void main() async {
   http.Response response = await http.get(request);
