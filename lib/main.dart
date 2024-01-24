@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:conversor/pages/home.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
@@ -10,13 +11,15 @@ const String key = String.fromEnvironment('KEYHGBRASIL');
 final request = Uri.https('api.hgbrasil.com', '/finance/quotations', {'key' : key});
 
 void main() async {
-  http.Response response = await http.get(request);
-  print(json.decode(response.body)['results']['currencies']);
-
   runApp(
-    MaterialApp(
+    const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Container(),
+      home: Home(),
     ),
   );
+}
+
+Future<Map> getData() async {
+  http.Response response = await http.get(request);
+  return json.decode(response.body);
 }
